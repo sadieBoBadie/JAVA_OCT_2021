@@ -1,4 +1,4 @@
-# JAVA - AUGUST 2021
+# JAVA - OCTOBER 2021
 
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/jupiterorbita/JAVA_OCT_2021)
 
