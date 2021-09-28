@@ -1,0 +1,33 @@
+OOP
+	1. Encapsulation
+		onject maintains a state inside a class
+		public, private, protected, default, static
+		private ssn;
+		private id;
+	
+	2. Abstraction
+		(an extention of encapsulation)
+		hiding the working style of an obj; only show what is required for an obj to work
+		public Class Car {
+			accelerate() {
+				-> move gas pedal
+				-> change gears in transmission
+			}
+		}
+		Math.random()
+		API
+		
+	3. Inheritance
+		class hands down from antoher class
+			extent a class
+	
+	4. Polymorphisism
+		taking many forms
+		Car -> Tesla -> model x
+					 -> model y
+					 -> model s
+		
+	
+	
+	
+	
