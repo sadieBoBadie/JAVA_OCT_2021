@@ -3,6 +3,5 @@ public class TestNinja {
 
         Ninja ninja1 = new Ninja();
         System.out.println(ninja1.getName());
-
     }
 }
