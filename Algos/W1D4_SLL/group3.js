@@ -8,6 +8,7 @@ class Node {
 class SLL {
     constructor() {
         this.head = null;
+        this.total = 0;
     }
 
     // console log (print) the data of every node in the current list
@@ -43,6 +44,7 @@ class SLL {
         var removed = this.head; // save the head in a temp variable
         this.head = this.head.next; // move the head
         removed.next = null; // make removed no longer reference the list
+        this.total--;
         return removed;
     }
 
@@ -55,6 +57,7 @@ class SLL {
     addToFront(node) {
         node.next = this.head; // set the new node's next to the head
         this.head = node; // move the head to the new node
+        this.total++;
     }
 
     // when a pointer is to the LEFT of an equal sign, we are CHANGING it
@@ -65,6 +68,7 @@ class SLL {
         var newNode = new Node(data); // create a new node with the data
         newNode.next = this.head; // set the new node's next to the head
         this.head = newNode; // move the head to the new node
+        this.total++;
     }
 
     // if data is contained within the current list, delete it.
@@ -73,13 +77,53 @@ class SLL {
     // consider the edge case if you have to delete the head node
     // consider the edge case your list is empty
     // consider the edge case that your list does not contain the data
-    delete(data) {    }
-
-    // return the size of the current linked list
-    // BONUS: how might you do this without linearly traversing the list? O(1)
-    // you may have to change other methods within this class... 
-    size() {}
+    delete(data) {
+            var runner = this.head;
+            // while we have a runner
+            if (runner.data === data) {
+                this.removeFromFront()
+            } else {
+                while (runner.next) {
+                    // return true if data === value
+                    if (runner.next.data === data && runner.next.next === null) {
+                        runner.next = null;
+                        this.total--
+                            return null;
+                    } else if (runner.next.data === data) {
+                        runner.next = runner.next.next
+                        this.total--
+                    }
+                    runner = runner.next;
+                }
+            }
+            // if the while loop completes, return null
+            return null;
+        }
+        //(1)   -->   (2)    -->  (3)  --> null
+        //head
+        // r
+        //date =1
+        // return the size of the current linked list
+        // BONUS: how might you do this without linearly traversing the list? O(1)
+        // you may have to change other methods within this class... 
+    size() {
+        return this.total;
+    }
 }
 
-// Don't forget to instantiate the SLL!
-// and add a few nodes first!
+var myList = new SLL();
+
+var myNode1 = new Node(11);
+var myNode2 = new Node(22);
+var myNode3 = new Node(33);
+
+myList.addToFront(myNode1);
+myList.addToFront(myNode2);
+myList.addToFront(myNode3);
+console.log(myList.size())
+myList.delete(11)
+myList.contains(11)
+myList.read()
+
+    // Don't forget to instantiate the SLL!
+    // and add a few nodes first!

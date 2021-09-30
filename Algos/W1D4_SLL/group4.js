@@ -73,13 +73,54 @@ class SLL {
     // consider the edge case if you have to delete the head node
     // consider the edge case your list is empty
     // consider the edge case that your list does not contain the data
-    delete(data) {    }
+
+    // data is the value we want to delete
+    delete(data) {
+        if (this.isEmpty()) return null;
+        let runner = this.head
+        let runner2 = runner.next
+        while (runner2) {
+            if (runner2.data == data) {
+                runner.next = runner2.next
+                break
+            }
+            runner = runner2
+            runner2 = runner2.next
+        }
+    }
+        // (11)   -->  (20)  -->    (30)  --> null
+        //runner  --------------->
+        //           runner2
+        //data = 20
 
     // return the size of the current linked list
     // BONUS: how might you do this without linearly traversing the list? O(1)
     // you may have to change other methods within this class... 
-    size() {}
+    size() {
+        let size = 0
+        let runner = this.head
+        while (runner) {
+            size++
+            runner = runner.next
+        }
+        return size
+    }
 }
 
 // Don't forget to instantiate the SLL!
 // and add a few nodes first!
+var myList = new SLL()
+
+// creating nodes
+var myNode = new Node(11)
+
+// executing methods:
+myList.addToFront(myNode)
+myList.addToFront(new Node(22))
+myList.addToFront(new Node(33))
+myList.addToFront(new Node(44))
+console.info(myList.size())
+myList.read()
+myList.delete(22)
+console.info(myList.size())
+myList.read()
