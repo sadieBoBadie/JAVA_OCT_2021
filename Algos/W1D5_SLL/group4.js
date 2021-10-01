@@ -22,7 +22,26 @@ class SLL {
     // return nothing
     // input: head -> (1) -> (5) -> (11) -> (7) -> (9) ->
     // print: 7
-    printSecondToLastValue() { }
+    //
+
+    printSecondToLastValue() {
+        if (this.length < 2) {
+            return null
+        }
+        var current = this.head;
+        if (this.length == 2) {
+            return current.data;
+        }
+        var secondToLast = this.length - 1;
+        while (current) {
+            this.length--;
+            current = current.next;
+            if (current.next == null) {
+                console.log(current.data);
+            }
+        }
+
+    }
 
     // bonus: print nth to last
     // if the link list has a nth to last value, print it
@@ -31,13 +50,13 @@ class SLL {
     //        n = 4
     // print: 9
     // hint - use 2 runners 
-    printNthToLast(n) { }
+    printNthToLast(n) {}
 
     // reverse linked list in place
     // ** you may not swap values between nodes **
     // input:  head -> (1) -> (2) -> (3) ->
     // output: head -> (3) -> (2) -> (1) ->
-    reverse() { }
+    reverse() {}
 
     // console log (print) the data of every node in the current list
     read() {
@@ -138,9 +157,28 @@ class SLL {
     size() {
         return this.length;
     }
+
 }
 
 
 
 // Don't forget to instantiate the SLL!
 // and add a few nodes first!
+
+
+
+// instantiate the SLL
+var myList = new SLL();
+
+// creating nodes
+var myNode = new Node(11);
+
+// executing methods:
+myList.addToFront(new Node(11));
+myList.addToFront(new Node(22));
+myList.addToFront(new Node(33));
+myList.addToFront(new Node(44));
+// myList.delete(44);
+// myList.read();
+// myList.size();
+myList.printSecondToLastValue();

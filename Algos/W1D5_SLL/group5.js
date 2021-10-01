@@ -22,7 +22,15 @@ class SLL {
     // return nothing
     // input: head -> (1) -> (5) -> (11) -> (7) -> (9) ->
     // print: 7
-    printSecondToLastValue() { }
+    printSecondToLastValue() {
+        if (size() > 2) {
+            let runner = this.head
+            while (runner.next.next) {
+                runner = runner.next
+            }
+            console.info(runner.data)
+        }
+    }
 
     // bonus: print nth to last
     // if the link list has a nth to last value, print it
@@ -31,13 +39,32 @@ class SLL {
     //        n = 4
     // print: 9
     // hint - use 2 runners 
-    printNthToLast(n) { }
+    printNthToLast(n) {
+        if (size() > n) {
+            let runner = this.head
+            for (var i = 0; i < size() - n; i++) {
+                runner = runner.next
+            }
+            console.info(runner.data)
+        }
+    }
 
     // reverse linked list in place
     // ** you may not swap values between nodes **
     // input:  head -> (1) -> (2) -> (3) ->
     // output: head -> (3) -> (2) -> (1) ->
-    reverse() { }
+    reverse() {
+        let arr = []
+        let runner = this.head
+        while (runner) {
+            arr.push(runner)
+            runner = runner.next
+        }
+        for (var i = arr.length; i > 0; i++) {
+            console.info(arr[i])
+            arr[i].next = arr[i - 1]
+        }
+    }
 
     // console log (print) the data of every node in the current list
     read() {
@@ -144,3 +171,16 @@ class SLL {
 
 // Don't forget to instantiate the SLL!
 // and add a few nodes first!
+var myList = new SLL()
+
+// creating nodes
+var myNode = new Node(11)
+
+// executing methods:
+myList.addToFront(myNode)
+myList.addToFront(new Node(22))
+myList.addToFront(new Node(33))
+myList.addToFront(new Node(44))
+myList.read()
+myList.reverse()
+myList.read()
